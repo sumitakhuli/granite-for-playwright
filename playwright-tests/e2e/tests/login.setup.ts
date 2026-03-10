@@ -1,7 +1,7 @@
-// login.spec.js
+// login.setup.ts
 
-import { test } from "../fixtures/index";
-
+import { STORAGE_STATE } from "../../playwright.config"; // STORAGE_STATE = "./auth/user.json"
+import { test } from "../fixtures";
 
 test.describe("Login page", () => {
   test("should login with the correct credentials", async ({
@@ -14,5 +14,6 @@ test.describe("Login page", () => {
       password: "welcome",
       username: "Oliver Smith",
     });
+    await page.context().storageState({ path: STORAGE_STATE });
   });
 });
